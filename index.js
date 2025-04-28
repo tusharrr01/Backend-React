@@ -1,5 +1,7 @@
-const connectToMongo = require('./db').default;
-const express = require('express');
+import connectToMongo from './db.js';
+import express, { json } from 'express';
+import authRoutes from './routes/auth.js';
+import notesRoutes from './routes/notes.js';
 
 const startServer = async () => {
   await connectToMongo(); 
@@ -11,9 +13,10 @@ const startServer = async () => {
   //   res.send('Hello World!');
   // });
   
+  app.use(json())
   // Available routes
-  app.use('/api/auth', require('./routes/auth'))
-  app.use('/api/notes', require('./routes/notes'))
+  app.use('/api/auth',authRoutes)
+  app.use('/api/notes',notesRoutes)
 
   app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`);
