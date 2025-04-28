@@ -11,7 +11,6 @@ router.post('/',(req,res)=>{
     const user = new User(req.body)
     user.save()
     res.json(req.body)
-
 })
 
 export default router;
