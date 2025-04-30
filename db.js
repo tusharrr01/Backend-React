@@ -1,5 +1,5 @@
 import { connect } from 'mongoose';
-const mongoURI = "mongodb://localhost:27017";
+const mongoURI = "mongodb://localhost:27017/MyDataBase";
 
 const connectToMongo = async () => {  
         await connect(mongoURI);
